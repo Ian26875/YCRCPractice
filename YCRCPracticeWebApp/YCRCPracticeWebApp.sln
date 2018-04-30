@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YCRCPracticeWebApp", "YCRCP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YCRCPracticeWebApp.Tests", "YCRCPracticeWebApp.Tests\YCRCPracticeWebApp.Tests.csproj", "{C112BDFF-C2FC-4DE0-AEED-767EBC6AA819}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YCRCPracticeWebApp.Service", "YCRCPracticeWebApp.Service\YCRCPracticeWebApp.Service.csproj", "{3F0178E9-5EAB-4B3C-916E-47ABA736AE93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YCRCPracticeWebApp.Repository", "YCRCPracticeWebApp.Repository\YCRCPracticeWebApp.Repository.csproj", "{38762AFD-EAF6-41B7-9D2D-3BC39C38DE0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{C112BDFF-C2FC-4DE0-AEED-767EBC6AA819}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C112BDFF-C2FC-4DE0-AEED-767EBC6AA819}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C112BDFF-C2FC-4DE0-AEED-767EBC6AA819}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F0178E9-5EAB-4B3C-916E-47ABA736AE93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F0178E9-5EAB-4B3C-916E-47ABA736AE93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F0178E9-5EAB-4B3C-916E-47ABA736AE93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F0178E9-5EAB-4B3C-916E-47ABA736AE93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38762AFD-EAF6-41B7-9D2D-3BC39C38DE0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38762AFD-EAF6-41B7-9D2D-3BC39C38DE0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38762AFD-EAF6-41B7-9D2D-3BC39C38DE0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38762AFD-EAF6-41B7-9D2D-3BC39C38DE0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
