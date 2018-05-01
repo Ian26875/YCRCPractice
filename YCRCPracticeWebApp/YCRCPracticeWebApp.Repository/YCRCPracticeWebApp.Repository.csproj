@@ -90,6 +90,7 @@
     <Compile Include="Invoices.cs">
       <DependentUpon>NorthwindModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Interface\IUnitOfWork.cs" />
     <Compile Include="NorthwindModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -168,9 +169,7 @@
     </Compile>
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interface\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EntityDeploy Include="NorthwindModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
