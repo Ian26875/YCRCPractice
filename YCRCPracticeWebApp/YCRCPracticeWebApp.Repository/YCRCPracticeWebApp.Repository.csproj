@@ -87,6 +87,8 @@
     <Compile Include="Employee_Sales_by_Country_Result.cs">
       <DependentUpon>NorthwindModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GeneralRepository.cs" />
+    <Compile Include="Interface\IGeneralRepository.cs" />
     <Compile Include="Invoices.cs">
       <DependentUpon>NorthwindModel.tt</DependentUpon>
     </Compile>
