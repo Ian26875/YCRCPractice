@@ -45,14 +45,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataTransferObject\OrderDto.cs" />
+    <Compile Include="Interface\IOrderService.cs" />
+    <Compile Include="OrderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataTransferObject\" />
-    <Folder Include="Interface\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\YCRCPracticeWebApp.Repository\YCRCPracticeWebApp.Repository.csproj">
+      <Project>{38762afd-eaf6-41b7-9d2d-3bc39c38de0b}</Project>
+      <Name>YCRCPracticeWebApp.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
