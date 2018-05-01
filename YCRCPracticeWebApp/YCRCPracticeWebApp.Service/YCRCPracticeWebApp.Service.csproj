@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="DataTransferObject\OrderDto.cs" />
     <Compile Include="Interface\IOrderService.cs" />
+    <Compile Include="Mapping\ServiceProfile.cs" />
     <Compile Include="OrderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
