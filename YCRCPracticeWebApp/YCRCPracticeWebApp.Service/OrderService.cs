@@ -49,6 +49,18 @@ namespace YCRCPracticeWebApp.Service
         }
 
         /// <summary>
+        /// Gets the order.
+        /// </summary>
+        /// <param name="orderId">The order identifier.</param>
+        /// <returns>OrderDto.</returns>
+        public OrderDto GetOrder(int orderId)
+        {
+            var source = _orderRepo.Find(orderId);
+            var dto = Mapper.Map<Orders, OrderDto>(source);
+            return dto;
+        }
+
+        /// <summary>
         /// Creates the order.
         /// </summary>
         /// <param name="orderDto">The order dto.</param>
