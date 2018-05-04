@@ -31,61 +31,62 @@ namespace YCRCPracticeWebApp.Service
             this._orderRepo = orderRepo;
         }
 
-        /// <summary>
-        /// Gets the page all orders.
-        /// </summary>
-        /// <param name="pageNumber">The page number.</param>
-        /// <param name="pageSize">Size of the page.</param>
-        /// <returns>IList&lt;OrderDto&gt;.</returns>
         public IList<OrderDto> GetPageAllOrders(int pageNumber, int pageSize)
         {
+            if (pageNumber < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageNumber));
+            }
+            if (pageSize < 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(pageSize));
+            }
             var source = _orderRepo
-                .GetAll()
-                .Skip(pageNumber * pageSize)
-                .Take(pageSize)
-                .ToList();
+                    .GetAll()
+                    .Skip(pageNumber * pageSize)
+                    .Take(pageSize)
+                    .ToList();
             var dtos = Mapper.Map<IList<Orders>, IList<OrderDto>>(source);
             return dtos;
         }
 
-        /// <summary>
-        /// Gets the order.
-        /// </summary>
-        /// <param name="orderId">The order identifier.</param>
-        /// <returns>OrderDto.</returns>
         public OrderDto GetOrder(int orderId)
         {
+            if (orderId < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(orderId));
+            }
             var source = _orderRepo.Find(orderId);
             var dto = Mapper.Map<Orders, OrderDto>(source);
             return dto;
         }
 
-        /// <summary>
-        /// Creates the order.
-        /// </summary>
-        /// <param name="orderDto">The order dto.</param>
         public void CreateOrder(OrderDto orderDto)
         {
+            if (orderDto == null)
+            {
+                throw new ArgumentNullException(nameof(orderDto));
+            }
             var model = Mapper.Map<OrderDto, Orders>(orderDto);
             _orderRepo.Insert(model);
         }
-
-        /// <summary>
-        /// Deletes the order.
-        /// </summary>
-        /// <param name="orderId">The order identifier.</param>
+    
         public void DeleteOrder(int orderId)
         {
-            var order=_orderRepo.Find(orderId);
+            if (orderId < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(orderId));
+            }
+            var order = _orderRepo.Find(orderId);
             _orderRepo.Delete(order);
         }
 
-        /// <summary>
-        /// Edits the order.
-        /// </summary>
-        /// <param name="orderDto">The order dto.</param>
         public void EditOrder(OrderDto orderDto)
         {
+            if (orderDto == null)
+            {
+                throw new ArgumentNullException(nameof(orderDto));
+            }
             var model = Mapper.Map<OrderDto, Orders>(orderDto);
             _orderRepo.Update(model);
         }
