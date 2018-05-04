@@ -54,7 +54,7 @@ namespace YCRCPracticeWebApp.Service
             }
             var source = _orderRepo
                     .GetAll()
-                    .Skip(pageNumber * pageSize)
+                    .Skip((pageNumber - 1) * pageSize)
                     .Take(pageSize)
                     .ToList();
             var dtos = Mapper.Map<IList<Orders>, IList<OrderDto>>(source);
