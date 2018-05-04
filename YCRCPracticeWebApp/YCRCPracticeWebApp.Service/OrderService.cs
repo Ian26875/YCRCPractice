@@ -31,7 +31,18 @@ namespace YCRCPracticeWebApp.Service
             this._orderRepo = orderRepo;
         }
 
-        public IList<OrderDto> GetPageAllOrders(int pageNumber, int pageSize)
+        /// <summary>
+        /// Gets the page all orders.
+        /// </summary>
+        /// <param name="pageNumber">The page number.</param>
+        /// <param name="pageSize">Size of the page.</param>
+        /// <returns>IList&lt;OrderDto&gt;.</returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">
+        /// pageNumber
+        /// or
+        /// pageSize
+        /// </exception>
+        public IList<OrderDto> GetPageOrders(int pageNumber, int pageSize)
         {
             if (pageNumber < 1)
             {
@@ -50,6 +61,12 @@ namespace YCRCPracticeWebApp.Service
             return dtos;
         }
 
+        /// <summary>
+        /// Gets the order.
+        /// </summary>
+        /// <param name="orderId">The order identifier.</param>
+        /// <returns>OrderDto.</returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">orderId</exception>
         public OrderDto GetOrder(int orderId)
         {
             if (orderId < 0)
@@ -61,6 +78,11 @@ namespace YCRCPracticeWebApp.Service
             return dto;
         }
 
+        /// <summary>
+        /// Creates the order.
+        /// </summary>
+        /// <param name="orderDto">The order dto.</param>
+        /// <exception cref="System.ArgumentNullException">orderDto</exception>
         public void CreateOrder(OrderDto orderDto)
         {
             if (orderDto == null)
@@ -70,7 +92,12 @@ namespace YCRCPracticeWebApp.Service
             var model = Mapper.Map<OrderDto, Orders>(orderDto);
             _orderRepo.Insert(model);
         }
-    
+
+        /// <summary>
+        /// Deletes the order.
+        /// </summary>
+        /// <param name="orderId">The order identifier.</param>
+        /// <exception cref="System.ArgumentOutOfRangeException">orderId</exception>
         public void DeleteOrder(int orderId)
         {
             if (orderId < 0)
@@ -81,6 +108,11 @@ namespace YCRCPracticeWebApp.Service
             _orderRepo.Delete(order);
         }
 
+        /// <summary>
+        /// Edits the order.
+        /// </summary>
+        /// <param name="orderDto">The order dto.</param>
+        /// <exception cref="System.ArgumentNullException">orderDto</exception>
         public void EditOrder(OrderDto orderDto)
         {
             if (orderDto == null)

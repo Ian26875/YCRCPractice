@@ -32,7 +32,7 @@ namespace YCRCPracticeWebApp.Service.Interface
         /// <param name="pageNumber">The page number.</param>
         /// <param name="pageSize">Size of the page.</param>
         /// <returns>IList&lt;OrderDto&gt;.</returns>
-        IList<OrderDto> GetPageAllOrders(int pageNumber, int pageSize);
+        IList<OrderDto> GetPageOrders(int pageNumber, int pageSize);
 
         /// <summary>
         /// Gets the order.
