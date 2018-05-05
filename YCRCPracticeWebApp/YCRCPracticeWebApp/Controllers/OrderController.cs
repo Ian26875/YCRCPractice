@@ -96,6 +96,24 @@ namespace YCRCPracticeWebApp.Controllers
             return View(viewModel);
         }
 
+        /// <summary>
+        /// Edits the specified view model.
+        /// </summary>
+        /// <param name="viewModel">The view model.</param>
+        /// <returns>ActionResult.</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(OrderEditViewModel viewModel)
+        {
+            if (ModelState.IsValid == false)
+            {
+                return View(viewModel);
+            }
+            var dto = Mapper.Map<OrderEditViewModel, OrderDto>(viewModel);
+            this._orderService.EditOrder(dto);
+            return RedirectToAction("Index");
+        }
+
 
     }
 }

@@ -6,6 +6,9 @@ using System.Web;
 
 namespace YCRCPracticeWebApp.Models.ViewModels
 {
+    /// <summary>
+    /// Class OrderCreateViewModel.
+    /// </summary>
     public class OrderCreateViewModel
     {
         [Display(Name = "訂單ID")]
