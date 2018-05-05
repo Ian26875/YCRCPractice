@@ -211,6 +211,7 @@
     </Compile>
     <Compile Include="Mappings\WebProfile.cs" />
     <Compile Include="Models\ViewModels\OrderCreateViewModel.cs" />
+    <Compile Include="Models\ViewModels\OrderDeleteViewModel.cs" />
     <Compile Include="Models\ViewModels\OrderEditViewModel.cs" />
     <Compile Include="Models\ViewModels\OrderViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -263,6 +264,7 @@
     <Content Include="Views\Order\_List.cshtml" />
     <Content Include="Views\Order\Create.cshtml" />
     <Content Include="Views\Order\Edit.cshtml" />
+    <Content Include="Views\Order\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

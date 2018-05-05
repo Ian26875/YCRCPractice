@@ -114,6 +114,34 @@ namespace YCRCPracticeWebApp.Controllers
             return RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// Deletes the specified order identifier.
+        /// </summary>
+        /// <param name="orderId">The order identifier.</param>
+        /// <returns>ActionResult.</returns>
+        public ActionResult Delete(int orderId)
+        {
+            var order = this._orderService.GetOrder(orderId);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            var viewModel = Mapper.Map<OrderDto, OrderDeleteViewModel>(order);
+            return View(viewModel);
+        }
 
+        /// <summary>
+        /// Deletes the confirm.
+        /// </summary>
+        /// <param name="orderId">The order identifier.</param>
+        /// <returns>ActionResult.</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ActionName("Delete")]
+        public ActionResult DeleteConfirm(int orderId)
+        {
+            this._orderService.DeleteOrder(orderId);
+            return RedirectToAction("Index");
+        }
     }
 }
