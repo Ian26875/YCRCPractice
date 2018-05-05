@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using YCRCPracticeWebApp.Models.ViewModels;
+using YCRCPracticeWebApp.Service.Interface;
 
 namespace YCRCPracticeWebApp.Controllers
 {
@@ -14,16 +15,43 @@ namespace YCRCPracticeWebApp.Controllers
     public class OrderController : Controller
     {
 
+        /// <summary>
+        /// The order service
+        /// </summary>
+        private readonly IOrderService _orderService;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OrderController"/> class.
+        /// </summary>
+        /// <param name="orderService">The order service.</param>
+        public OrderController(IOrderService orderService)
+        {
+            this._orderService = orderService;
+        }
 
+        /// <summary>
+        /// Indexes this instance.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult List()
-        {           
-            return View();
+        /// <summary>
+        /// Lists the specified page number.
+        /// </summary>
+        /// <param name="pageNumber">The page number.</param>
+        /// <param name="pageSize">Size of the page.</param>
+        /// <returns>ActionResult.</returns>
+        public ActionResult List(int pageNumber = 1, int pageSize = 20)
+        {
+            var viewModels = this._orderService.GetPageOrders(pageNumber, pageSize);
+
+            return PartialView("_List", viewModels);
         }
+
+
+
     }
 }
