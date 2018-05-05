@@ -1,6 +1,8 @@
 using System;
-
+using System.Linq;
 using Unity;
+using Unity.Lifetime;
+using Unity.RegistrationByConvention;
 
 namespace YCRCPracticeWebApp
 {
@@ -36,12 +38,18 @@ namespace YCRCPracticeWebApp
         /// </remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
-            // NOTE: To load from web.config uncomment the line below.
-            // Make sure to add a Unity.Configuration to the using statements.
-            // container.LoadConfiguration();
+          
+            container.RegisterTypes(
+               types: AllClasses.FromLoadedAssemblies().Where(x => x.Namespace.Contains("YCRCPracticeWebApp")),
+               getFromTypes: WithMappings.FromMatchingInterface,
+               getName: WithName.Default,
+               getLifetimeManager: WithLifetime.Custom<TransientLifetimeManager>,
+               getInjectionMembers: null,
+               overwriteExistingMappings: true);
 
-            // TODO: Register your type's mappings here.
-            // container.RegisterType<IProductRepository, ProductRepository>();
+     
+
+
         }
     }
 }
