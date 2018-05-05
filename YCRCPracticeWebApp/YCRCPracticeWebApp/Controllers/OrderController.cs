@@ -49,11 +49,35 @@ namespace YCRCPracticeWebApp.Controllers
         public ActionResult List(int pageNumber = 1, int pageSize = 20)
         {
             var dtos = this._orderService.GetPageOrders(pageNumber, pageSize);
-            var viewModels = Mapper.Map<IList<OrderDto>,IList<OrderViewModel>>(dtos);
+            var viewModels = Mapper.Map<IList<OrderDto>, IList<OrderViewModel>>(dtos);
             return PartialView("_List", viewModels);
         }
 
+        /// <summary>
+        /// Creates this instance.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
+        public ActionResult Create()
+        {
+            return View();
+        }
 
-
+        /// <summary>
+        /// Creates the specified view model.
+        /// </summary>
+        /// <param name="viewModel">The view model.</param>
+        /// <returns>ActionResult.</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(OrderCreateViewModel viewModel)
+        {
+            if (ModelState.IsValid == false)
+            {
+                return View(viewModel);
+            }
+            var dto = Mapper.Map<OrderCreateViewModel, OrderDto>(viewModel);
+            this._orderService.CreateOrder(dto);
+            return RedirectToAction("Index");
+        }
     }
 }

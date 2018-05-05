@@ -29,6 +29,7 @@ namespace YCRCPracticeWebApp.Mappings
         private void ViewModelToDto()
         {
             CreateMap<OrderViewModel, OrderDto>();
+            CreateMap<OrderCreateViewModel, OrderDto>();
         }
 
         /// <summary>
@@ -37,6 +38,7 @@ namespace YCRCPracticeWebApp.Mappings
         private void DtoToViewModel()
         {
             CreateMap<OrderDto, OrderViewModel>();
+            CreateMap<OrderDto, OrderCreateViewModel>();
         }
     }
 }
