@@ -1,8 +1,11 @@
 using System;
+using System.Data.Entity;
 using System.Linq;
 using Unity;
+using Unity.AspNet.Mvc;
 using Unity.Lifetime;
 using Unity.RegistrationByConvention;
+using YCRCPracticeWebApp.Repository;
 
 namespace YCRCPracticeWebApp
 {
@@ -38,17 +41,22 @@ namespace YCRCPracticeWebApp
         /// </remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
-          
-            container.RegisterTypes(
+
+            container.RegisterTypes
+            (
                types: AllClasses.FromLoadedAssemblies().Where(x => x.Namespace.Contains("YCRCPracticeWebApp")),
                getFromTypes: WithMappings.FromMatchingInterface,
                getName: WithName.Default,
                getLifetimeManager: WithLifetime.Custom<TransientLifetimeManager>,
                getInjectionMembers: null,
-               overwriteExistingMappings: true);
+               overwriteExistingMappings: true
+            );
 
-     
 
+            container.RegisterType<DbContext, NorthwindEntities>
+            (
+                new PerRequestLifetimeManager()
+            );
 
         }
     }

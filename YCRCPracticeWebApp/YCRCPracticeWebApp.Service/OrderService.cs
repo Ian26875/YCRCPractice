@@ -54,6 +54,7 @@ namespace YCRCPracticeWebApp.Service
             }
             var source = _orderRepo
                     .GetAll()
+                    .OrderBy(x=>x.OrderID)
                     .Skip((pageNumber - 1) * pageSize)
                     .Take(pageSize)
                     .ToList();

@@ -1,9 +1,11 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using YCRCPracticeWebApp.Models.ViewModels;
+using YCRCPracticeWebApp.Service.DataTransferObject;
 using YCRCPracticeWebApp.Service.Interface;
 
 namespace YCRCPracticeWebApp.Controllers
@@ -46,8 +48,8 @@ namespace YCRCPracticeWebApp.Controllers
         /// <returns>ActionResult.</returns>
         public ActionResult List(int pageNumber = 1, int pageSize = 20)
         {
-            var viewModels = this._orderService.GetPageOrders(pageNumber, pageSize);
-
+            var dtos = this._orderService.GetPageOrders(pageNumber, pageSize);
+            var viewModels = Mapper.Map<IList<OrderDto>,IList<OrderViewModel>>(dtos);
             return PartialView("_List", viewModels);
         }
 
