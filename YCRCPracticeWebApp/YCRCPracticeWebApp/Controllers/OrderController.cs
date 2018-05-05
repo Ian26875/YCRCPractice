@@ -79,5 +79,23 @@ namespace YCRCPracticeWebApp.Controllers
             this._orderService.CreateOrder(dto);
             return RedirectToAction("Index");
         }
+
+        /// <summary>
+        /// Edits the specified order identifier.
+        /// </summary>
+        /// <param name="orderId">The order identifier.</param>
+        /// <returns>ActionResult.</returns>
+        public ActionResult Edit(int orderId)
+        {
+            var order=this._orderService.GetOrder(orderId);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            var viewModel = Mapper.Map<OrderDto, OrderEditViewModel>(order);
+            return View(viewModel);
+        }
+
+
     }
 }
