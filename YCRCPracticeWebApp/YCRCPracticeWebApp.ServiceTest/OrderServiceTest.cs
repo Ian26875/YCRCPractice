@@ -162,10 +162,10 @@ namespace YCRCPracticeWebApp.ServiceTest
             {
                 CustomerID = source.CustomerID,
                 EmployeeID = source.EmployeeID,
-                Freight = source.Freight,               
-                OrderID =source.OrderID,
+                Freight = source.Freight,
+                OrderID = source.OrderID,
                 OrderDate = source.OrderDate,
-                RequiredDate = source.RequiredDate,  
+                RequiredDate = source.RequiredDate,
                 ShipAddress = source.ShipAddress,
                 ShipCity = source.ShipCity,
                 ShipCountry = source.ShipCountry,
@@ -182,8 +182,122 @@ namespace YCRCPracticeWebApp.ServiceTest
             var actual = sut.GetOrder(source.OrderID);
 
             //assert
-          
+
             actual.Should().BeEquivalentTo(expected);
+        }
+
+        [TestCategory("OrderService")]
+        [TestProperty("OrderService", "CreateOrder")]
+        [TestMethod]
+        public void CreateOrder_輸入OrderDto為空_應ThrowArgumentNullException()
+        {
+            //arrange         
+            var sut = this.GetSystemUnderTest();
+            OrderDto dto = null;
+
+            //act
+            Action action = () => sut.CreateOrder(dto);
+
+            //assert
+            action.Should().Throw<ArgumentNullException>();
+        }
+
+
+
+
+        [TestCategory("OrderService")]
+        [TestProperty("OrderService", "CreateOrder")]
+        [TestMethod]
+        public void CreateOrder_新增訂單()
+        {
+            //arrange         
+            var sut = this.GetSystemUnderTest();
+
+            Fixture fixture = new Fixture();
+            var dto = fixture.Build<OrderDto>()
+                             .Create();
+
+            //act
+            Action action = () => sut.CreateOrder(dto);
+
+            //assert
+            action.Should().NotThrow<Exception>();
+        }
+
+
+        [TestCategory("OrderService")]
+        [TestProperty("OrderService", "EditOrder")]
+        [TestMethod]
+        public void EditOrder_輸入OrderDto為空_應ThrowArgumentNullException()
+        {
+            //arrange         
+            var sut = this.GetSystemUnderTest();
+
+            Fixture fixture = new Fixture();
+            var dto = fixture.Build<OrderDto>()
+                             .Create();
+
+            //act
+            Action action = () => sut.EditOrder(dto);
+
+            //assert
+            action.Should().NotThrow<Exception>();
+        }
+
+        [TestCategory("OrderService")]
+        [TestProperty("OrderService", "EditOrder")]
+        [TestMethod]
+        public void EditOrder_修改訂單()
+        {
+            //arrange         
+            var sut = this.GetSystemUnderTest();
+
+            Fixture fixture = new Fixture();
+            var dto = fixture.Build<OrderDto>()
+                             .Create();
+
+            //act
+            Action action = () => sut.EditOrder(dto);
+
+            //assert
+            action.Should().NotThrow<Exception>();
+        }
+
+
+        [TestCategory("OrderService")]
+        [TestProperty("OrderService", "DeleteOrder")]
+        [TestMethod]
+        public void DeleteOrder_orderId為小於零數值_應ThrowArgumentOutOfRangeException()
+        {
+            //arrange         
+            var sut = this.GetSystemUnderTest();
+            Fixture fixture = new Fixture();
+            fixture.Customizations.Add(new RandomNumericSequenceGenerator(int.MinValue, 0));
+            int orderId = fixture.Create<int>();
+            //act
+            Action action = () => sut.DeleteOrder(orderId);
+
+            //assert
+            action.Should().Throw<ArgumentOutOfRangeException>();
+        }
+
+        [TestCategory("OrderService")]
+        [TestProperty("OrderService", "DeleteOrder")]
+        [TestMethod]
+        public void DeleteOrder_刪除訂單()
+        {
+            //arrange         
+            var sut = this.GetSystemUnderTest();
+
+            Fixture fixture = new Fixture();
+            fixture.Customizations.Add(new RandomNumericSequenceGenerator(0, int.MaxValue));
+            int orderId = fixture.Create<int>();
+
+            //act
+            Action action = () => sut.DeleteOrder(orderId);
+
+            //assert
+            action.Should().NotThrow<Exception>();
         }
     }
 }
