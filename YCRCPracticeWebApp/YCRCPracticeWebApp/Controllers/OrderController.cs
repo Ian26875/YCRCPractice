@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using YCRCPracticeWebApp.ActionFilter;
 using YCRCPracticeWebApp.Models.ViewModels;
 using YCRCPracticeWebApp.Service.DataTransferObject;
 using YCRCPracticeWebApp.Service.Interface;
@@ -46,6 +47,7 @@ namespace YCRCPracticeWebApp.Controllers
         /// <param name="pageNumber">The page number.</param>
         /// <param name="pageSize">Size of the page.</param>
         /// <returns>ActionResult.</returns>
+        [ChildActionOnly]
         public ActionResult List(int pageNumber = 1, int pageSize = 20)
         {
             var dtos = this._orderService.GetPageOrders(pageNumber, pageSize);
@@ -69,6 +71,7 @@ namespace YCRCPracticeWebApp.Controllers
         /// <returns>ActionResult.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [TransactionEvent]
         public ActionResult Create(OrderCreateViewModel viewModel)
         {
             if (ModelState.IsValid == false)
@@ -103,6 +106,7 @@ namespace YCRCPracticeWebApp.Controllers
         /// <returns>ActionResult.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [TransactionEvent]
         public ActionResult Edit(OrderEditViewModel viewModel)
         {
             if (ModelState.IsValid == false)
@@ -138,6 +142,7 @@ namespace YCRCPracticeWebApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("Delete")]
+        [TransactionEvent]
         public ActionResult DeleteConfirm(int orderId)
         {
             this._orderService.DeleteOrder(orderId);
