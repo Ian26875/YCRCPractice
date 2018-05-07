@@ -1,20 +1,14 @@
-﻿using AutoMapper;
+﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YCRCPracticeWebApp.Service.Mapping;
+using AutoMapper;
+using YCRCPracticeWebApp.Mappings;
 
-namespace YCRCPracticeWebApp.ServiceTest
+namespace YCRCPracticeWebApp.Tests
 {
-    /// <summary>
-    /// Class TestHook.
-    /// </summary>
     [TestClass]
     public class TestHook
     {
+
         /// <summary>
         /// Assemblies the initialize.
         /// </summary>
@@ -27,7 +21,7 @@ namespace YCRCPracticeWebApp.ServiceTest
 
             Mapper.Initialize(config =>
             {
-                config.AddProfile<ServiceProfile>();
+                config.AddProfile<WebProfile>();
             });
         }
 
@@ -37,7 +31,7 @@ namespace YCRCPracticeWebApp.ServiceTest
         [AssemblyCleanup]
         public static void AssemblyCleanup()
         {
-           
+
         }
     }
 }
