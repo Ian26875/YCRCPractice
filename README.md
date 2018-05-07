@@ -6,7 +6,7 @@ Technologies
 * AutoMapper
 * Unity DI
 * Bootstrap
-* MsUnit
+* MsTest
 * NSubstitute
 * FluentAssertions
 * AutoFixture
