@@ -27,13 +27,6 @@ namespace YCRCPracticeWebApp.ServiceTest
         {
             OrdeRepository = Substitute.For<IGeneralRepository<Orders>>();
 
-            //Resets the mapper configuration. Not intended for production use, but for testing scenarios.
-            Mapper.Reset();
-
-            Mapper.Initialize(config =>
-            {
-                config.AddProfile<ServiceProfile>();
-            });
         }
 
         /// <summary>
