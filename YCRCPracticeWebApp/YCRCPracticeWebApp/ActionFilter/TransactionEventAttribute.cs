@@ -27,6 +27,7 @@ namespace YCRCPracticeWebApp.ActionFilter
                 throw new ArgumentNullException(nameof(unitOfWork));
             }
             unitOfWork.SaveChanges();
+            unitOfWork.Dispose();
             base.OnActionExecuted(filterContext);
         }
     }
