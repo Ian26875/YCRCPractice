@@ -5,7 +5,7 @@ Technologies
 * EntityFramework 
 * AutoMapper
 * Unity DI
-* Twitter Bootstrap
+* Bootstrap
 * MsUnit
 * NSubstitute
 * FluentAssertions
