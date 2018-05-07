@@ -1,0 +1,7 @@
+﻿@model DateTime?
+
+@{ 
+    string format = ViewData["Format"]?.ToString() ?? "yyyy/MM/dd HH:mm:ss";
+    @(Model?.ToString(format))
+}
+
