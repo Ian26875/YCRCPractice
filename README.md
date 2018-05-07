@@ -9,6 +9,8 @@ Technologies
 * MsUnit
 * NSubstitute
 * FluentAssertions
+* AutoFixture
+
 
 Patterns & Practices
 ---------------------
