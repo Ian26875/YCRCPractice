@@ -9,6 +9,7 @@ namespace YCRCPracticeWebApp.ActionFilter
 {
     /// <summary>
     /// Class TransactionEventAttribute. This class cannot be inherited.
+    /// the unitofwork saveChanges
     /// </summary>
     /// <seealso cref="System.Web.Mvc.ActionFilterAttribute" />
     public sealed class TransactionEventAttribute : ActionFilterAttribute

@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using YCRCPracticeWebApp.Mappings;
 using YCRCPracticeWebApp.Service.Mapping;
 
-namespace YCRCPracticeWebApp.App_Start
+namespace YCRCPracticeWebApp
 {
     /// <summary>
     /// Class AutoMapperConfig.
