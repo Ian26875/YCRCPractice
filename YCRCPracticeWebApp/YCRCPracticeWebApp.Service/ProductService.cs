@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 using YCRCPracticeWebApp.Repository;
 using YCRCPracticeWebApp.Repository.Interface;
 using YCRCPracticeWebApp.Service.DataTransferObject;
+using YCRCPracticeWebApp.Service.Interface;
 
 namespace YCRCPracticeWebApp.Service
 {
     /// <summary>
     /// Class ProductService.
     /// </summary>
-    public class ProductService
+    public class ProductService : IProductService
     {
 
         /// <summary>
