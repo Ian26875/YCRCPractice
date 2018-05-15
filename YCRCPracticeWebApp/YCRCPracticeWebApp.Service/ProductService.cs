@@ -37,6 +37,10 @@ namespace YCRCPracticeWebApp.Service
         /// <param name="dto">The dto.</param>
         public void CreateProduct(ProductDto dto)
         {
+            if (dto == null)
+            {
+                throw new ArgumentNullException(nameof(dto));
+            }
             var model = Mapper.Map<ProductDto, Products>(dto);
             this._productRepo.Insert(model);
         }
@@ -47,6 +51,10 @@ namespace YCRCPracticeWebApp.Service
         /// <param name="dto">The dto.</param>
         public void DeleteProduct(ProductDto dto)
         {
+            if (dto == null)
+            {
+                throw new ArgumentOutOfRangeException(nameof(dto));
+            }
             var model = Mapper.Map<ProductDto, Products>(dto);
             this._productRepo.Delete(model);
         }
@@ -57,6 +65,10 @@ namespace YCRCPracticeWebApp.Service
         /// <param name="productId">The product identifier.</param>
         public void DeleteProduct(int productId)
         {
+            if (productId < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(productId));
+            }
             var source = _productRepo.Find(productId);
             this._productRepo.Delete(source);
         }
@@ -65,8 +77,12 @@ namespace YCRCPracticeWebApp.Service
         /// Updates the product.
         /// </summary>
         /// <param name="dto">The dto.</param>
-        public void UpdateProduct(ProductDto dto)
+        public void EditProduct(ProductDto dto)
         {
+            if (dto == null)
+            {
+                throw new ArgumentOutOfRangeException(nameof(dto));
+            }
             var model = Mapper.Map<ProductDto, Products>(dto);
             this._productRepo.Update(model);
         }
@@ -123,12 +139,33 @@ namespace YCRCPracticeWebApp.Service
         /// <returns>IList&lt;ProductDto&gt;.</returns>
         public IList<ProductDto> GetProductsByProductName(string productName)
         {
+            if (string.IsNullOrWhiteSpace(productName))
+            {
+                throw new ArgumentException(nameof(productName));
+            }
             var source = this._productRepo
                  .Where(x => x.ProductName.Contains(productName))
                  .OrderBy(x => x.ProductID)
                  .ToList();
             var dtos = Mapper.Map<IList<Products>, IList<ProductDto>>(source);
             return dtos;
+        }
+
+        /// <summary>
+        /// Gets the product.
+        /// </summary>
+        /// <param name="productId">The product identifier.</param>
+        /// <returns>ProductDto.</returns>
+        /// <exception cref="System.ArgumentOutOfRangeException">productId</exception>
+        public ProductDto GetProduct(int productId)
+        {
+            if (productId < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(productId));
+            }
+            var source = _productRepo.Find(productId);
+            var dto = Mapper.Map<Products, ProductDto>(source);
+            return dto;
         }
     }
 }

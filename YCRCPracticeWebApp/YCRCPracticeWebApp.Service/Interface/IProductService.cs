@@ -27,7 +27,7 @@ namespace YCRCPracticeWebApp.Service.Interface
         /// Updates the product.
         /// </summary>
         /// <param name="dto">The dto.</param>
-        void UpdateProduct(ProductDto dto);
+        void EditProduct(ProductDto dto);
 
         /// <summary>
         /// Gets the page products.
@@ -54,5 +54,12 @@ namespace YCRCPracticeWebApp.Service.Interface
         /// <param name="productName">Name of the product.</param>
         /// <returns>IList&lt;ProductDto&gt;.</returns>
         IList<ProductDto> GetProductsByProductName(string productName);
+
+        /// <summary>
+        /// Gets the product.
+        /// </summary>
+        /// <param name="productId">The product identifier.</param>
+        /// <returns>ProductDto.</returns>
+        ProductDto GetProduct(int productId);
     }
 }
