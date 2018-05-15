@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using YCRCPracticeWebApp.Repository;
 using YCRCPracticeWebApp.Repository.Interface;
@@ -40,6 +43,17 @@ namespace YCRCPracticeWebApp.ServiceTest
         {
             var sut = new ProductService(this.ProductRepository);
             return sut;
+        }
+
+        /// <summary>
+        /// Gets the test data from CSV.
+        /// </summary>
+        /// <returns>System.Collections.Generic.IList&lt;YCRCPracticeWebApp.Repository.Products&gt;.</returns>
+        private IList<Products> GetTestDataFromCsv()
+        {
+            IList<Products> source = new List<Products>();
+            
+            return source;
         }
 
         [TestCategory("ProductService")]
