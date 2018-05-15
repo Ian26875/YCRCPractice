@@ -11,12 +11,12 @@ using YCRCPracticeWebApp.Service;
 using YCRCPracticeWebApp.Service.Interface;
 using AutoFixture;
 using System.Linq;
+using CsvHelper;
 using YCRCPracticeWebApp.Service.DataTransferObject;
 
 namespace YCRCPracticeWebApp.ServiceTest
 {
     [TestClass]
-    [DeploymentItem(@"TestData\Product_TestData.csv")]
     public class ProductServiceTest
     {
 
@@ -43,17 +43,6 @@ namespace YCRCPracticeWebApp.ServiceTest
         {
             var sut = new ProductService(this.ProductRepository);
             return sut;
-        }
-
-        /// <summary>
-        /// Gets the test data from CSV.
-        /// </summary>
-        /// <returns>System.Collections.Generic.IList&lt;YCRCPracticeWebApp.Repository.Products&gt;.</returns>
-        private IList<Products> GetTestDataFromCsv()
-        {
-            IList<Products> source = new List<Products>();
-            
-            return source;
         }
 
         [TestCategory("ProductService")]
@@ -343,7 +332,6 @@ namespace YCRCPracticeWebApp.ServiceTest
             //arrange         
             var sut = this.GetSystemUnderTest();
 
-
             Fixture fixture = new Fixture();
             var source = fixture.Build<Products>()
                                 .OmitAutoProperties()
@@ -409,5 +397,39 @@ namespace YCRCPracticeWebApp.ServiceTest
             //assert
             action.Should().Throw<ArgumentNullException>();
         }
+
+        [TestCategory("Productservice")]
+        [TestProperty("Productservice", "GetProductsByProductName")]
+        [TestMethod]
+        public void GetProductsByProductName_輸入產品名稱為Spegesild_應取得所有產品名稱Spegesild資料()
+        {
+            //arrange   
+            var expected = 30;
+
+            var sut = this.GetSystemUnderTest();
+
+            string productName = "Spegesild";
+
+            Fixture fixture = new Fixture();
+
+            var source = fixture.Build<Products>()
+                                .With(x => x.ProductName, productName)
+                                .OmitAutoProperties()
+                                .CreateMany(30)
+                                .AsQueryable();
+
+            this.ProductRepository
+                .Where(null)
+                .ReturnsForAnyArgs(source);
+
+
+            //act
+            var actual = sut.GetProductsByProductName(productName);
+
+            //assert
+            actual.Any(x => x.ProductName == productName).Should().BeTrue();
+            actual.Should().HaveCount(expected);
+        }
+
     }
 }
