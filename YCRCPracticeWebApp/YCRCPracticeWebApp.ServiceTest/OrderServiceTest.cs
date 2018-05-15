@@ -248,7 +248,6 @@ namespace YCRCPracticeWebApp.ServiceTest
             Fixture fixture = new Fixture();
             var dto = fixture.Build<OrderDto>()
                              .Create();
-
             //act
             Action action = () => sut.EditOrder(dto);
 

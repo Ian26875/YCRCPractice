@@ -53,7 +53,7 @@ namespace YCRCPracticeWebApp.Service
         {
             if (dto == null)
             {
-                throw new ArgumentOutOfRangeException(nameof(dto));
+                throw new ArgumentNullException(nameof(dto));
             }
             var model = Mapper.Map<ProductDto, Products>(dto);
             this._productRepo.Delete(model);
@@ -141,7 +141,7 @@ namespace YCRCPracticeWebApp.Service
         {
             if (string.IsNullOrWhiteSpace(productName))
             {
-                throw new ArgumentException(nameof(productName));
+                throw new ArgumentNullException(nameof(productName));
             }
             var source = this._productRepo
                  .Where(x => x.ProductName.Contains(productName))
