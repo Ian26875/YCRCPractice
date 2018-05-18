@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 
 namespace YCRCPracticeWebApp.Repository.Cache
 {
-    public class MemoryCacheProvider
+    /// <summary>
+    /// Class MemoryCacheProvider.
+    /// </summary>
+    /// <seealso cref="YCRCPracticeWebApp.Repository.Cache.ICacheProvider" />
+    public class MemoryCacheProvider : ICacheProvider
     {
         /// <summary>
         /// The memory cache
