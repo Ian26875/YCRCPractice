@@ -54,6 +54,7 @@
     <Compile Include="Alphabetical_list_of_products.cs">
       <DependentUpon>NorthwindModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Cache\ICacheProvider.cs" />
     <Compile Include="Categories.cs">
       <DependentUpon>NorthwindModel.tt</DependentUpon>
     </Compile>
