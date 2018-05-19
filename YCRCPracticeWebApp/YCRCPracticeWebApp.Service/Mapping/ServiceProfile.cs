@@ -30,8 +30,8 @@ namespace YCRCPracticeWebApp.Service.Mapping
         private void DbModelToDto()
         {
             CreateMap<Orders,OrderDto>();
+            CreateMap<Products, ProductDto>();
         }
-
 
         /// <summary>
         /// Dtoes to database model.
@@ -39,6 +39,7 @@ namespace YCRCPracticeWebApp.Service.Mapping
         private void DtoToDbModel()
         {
             CreateMap<OrderDto, Orders>();
+            CreateMap<ProductDto, Products>();
         }
     }
 }

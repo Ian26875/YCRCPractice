@@ -15,7 +15,7 @@ namespace YCRCPracticeWebApp.Controllers
     /// Class OrderController.
     /// </summary>
     /// <seealso cref="System.Web.Mvc.Controller" />
-    public class OrderController : Controller
+    public class OrderController : BaseController
     {
 
         /// <summary>

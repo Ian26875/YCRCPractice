@@ -32,6 +32,8 @@ namespace YCRCPracticeWebApp.Mappings
             CreateMap<OrderCreateViewModel, OrderDto>();
             CreateMap<OrderEditViewModel, OrderDto>();
             CreateMap<OrderDeleteViewModel, OrderDto>();
+
+            CreateMap<ProductViewModel, ProductDto>();
         }
 
         /// <summary>
@@ -43,6 +45,8 @@ namespace YCRCPracticeWebApp.Mappings
             CreateMap<OrderDto, OrderCreateViewModel>();
             CreateMap<OrderDto, OrderEditViewModel>();
             CreateMap<OrderDto, OrderDeleteViewModel>();
+
+            CreateMap<ProductDto, ProductViewModel>();
         }
     }
 }

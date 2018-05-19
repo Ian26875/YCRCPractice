@@ -46,9 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataTransferObject\OrderDto.cs" />
+    <Compile Include="DataTransferObject\ProductDto.cs" />
     <Compile Include="Interface\IOrderService.cs" />
+    <Compile Include="Interface\IProductService.cs" />
     <Compile Include="Mapping\ServiceProfile.cs" />
     <Compile Include="OrderService.cs" />
+    <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

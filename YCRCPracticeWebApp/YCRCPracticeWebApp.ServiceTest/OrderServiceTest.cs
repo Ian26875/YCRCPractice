@@ -122,11 +122,13 @@ namespace YCRCPracticeWebApp.ServiceTest
         [TestCategory("OrderService")]
         [TestProperty("OrderService", "GetOrder")]
         [TestMethod]
-        public void GetOrder_輸入orderId為負一_應ThrowArgumentOutOfRangeException()
+        public void GetOrder_輸入orderId為小於零的_應ThrowArgumentOutOfRangeException()
         {
 
             //arrange         
-            int orderId = -1;
+            Fixture fixture = new Fixture();
+            fixture.Customizations.Add(new RandomNumericSequenceGenerator(int.MinValue, 0));
+            int orderId = fixture.Create<int>();
 
             var sut = this.GetSystemUnderTest();
 
@@ -248,7 +250,6 @@ namespace YCRCPracticeWebApp.ServiceTest
             Fixture fixture = new Fixture();
             var dto = fixture.Build<OrderDto>()
                              .Create();
-
             //act
             Action action = () => sut.EditOrder(dto);
 

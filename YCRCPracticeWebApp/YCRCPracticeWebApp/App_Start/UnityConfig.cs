@@ -6,6 +6,7 @@ using Unity.AspNet.Mvc;
 using Unity.Lifetime;
 using Unity.RegistrationByConvention;
 using YCRCPracticeWebApp.Repository;
+using YCRCPracticeWebApp.Repository.Cache;
 
 namespace YCRCPracticeWebApp
 {
@@ -58,6 +59,10 @@ namespace YCRCPracticeWebApp
                 new PerRequestLifetimeManager()
             );
 
+            container.RegisterType<ICacheProvider, MemoryCacheProvider>
+            (
+                new PerRequestLifetimeManager()
+            );
         }
     }
 }
