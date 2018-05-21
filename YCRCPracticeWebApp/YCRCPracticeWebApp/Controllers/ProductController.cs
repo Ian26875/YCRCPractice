@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using PagedList;
+using WebGrease.Css.Extensions;
 using YCRCPracticeWebApp.Models.ViewModels;
 using YCRCPracticeWebApp.Service.DataTransferObject;
 using YCRCPracticeWebApp.Service.Interface;
@@ -40,11 +42,12 @@ namespace YCRCPracticeWebApp.Controllers
         /// </summary>
         /// <returns>ActionResult.</returns>
         [ChildActionOnly]
-        public ActionResult List()
+        public ActionResult List(int pageNumber = 1, int pageSize = 10)
         {
-            var dtos = _productSvc.GetAllProducts();
+            var dtos = _productSvc.GetAllProducts();           
             var viewModels = Mapper.Map<IList<ProductDto>, IList<ProductViewModel>>(dtos);
-            return View(viewModels);
+            var pageLists = viewModels.ToPagedList(pageNumber, pageSize);
+            return PartialView("_List", pageLists);
         }
     }
 }
