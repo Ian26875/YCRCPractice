@@ -85,4 +85,10 @@
     }
 
 </table>
-@Html.PagedListPager(Model, page => Url.Action("Index", new { pageNumber = page, pageSize = Model.PageSize }))
+@Html.PagedListPager(Model, page =>
+Url.Action("Index",
+new
+{
+    pageNumber = page,
+    pageSize = Model.PageSize
+}))
