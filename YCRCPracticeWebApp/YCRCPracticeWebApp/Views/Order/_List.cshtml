@@ -1,4 +1,5 @@
-﻿@model IEnumerable<YCRCPracticeWebApp.Models.ViewModels.OrderViewModel>
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<YCRCPracticeWebApp.Models.ViewModels.OrderViewModel>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -6,46 +7,46 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.OrderID)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().OrderID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CustomerID)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().CustomerID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EmployeeID)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().EmployeeID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OrderDate)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().OrderDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RequiredDate)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().RequiredDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ShippedDate)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ShippedDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ShipVia)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ShipVia)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Freight)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Freight)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ShipName)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ShipName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ShipAddress)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ShipAddress)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ShipCity)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ShipCity)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ShipRegion)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ShipRegion)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ShipPostalCode)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ShipPostalCode)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ShipCountry)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ShipCountry)
         </th>
         <th></th>
     </tr>
@@ -103,3 +104,10 @@
 }
 
 </table>
+@Html.PagedListPager(Model, page =>
+    Url.Action("Index",
+        new
+        {
+            pageNumber = page,
+            pageSize = ViewData["PageSize"]
+        }),PagedListRenderOptions.ClassicPlusFirstAndLast)

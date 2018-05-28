@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using YCRCPracticeWebApp.ActionFilter;
 using YCRCPracticeWebApp.Models.ViewModels;
 using YCRCPracticeWebApp.Service.DataTransferObject;
@@ -50,9 +51,11 @@ namespace YCRCPracticeWebApp.Controllers
         [ChildActionOnly]
         public ActionResult List(int pageNumber = 1, int pageSize = 20)
         {
-            var dtos = this._orderService.GetPageOrders(pageNumber, pageSize);
+            var dtos = this._orderService.GetAllOrders();
             var viewModels = Mapper.Map<IList<OrderDto>, IList<OrderViewModel>>(dtos);
-            return PartialView("_List", viewModels);
+            var pageLists = viewModels.ToPagedList(pageNumber, pageSize);
+            ViewData["PageSize"] = pageSize;
+            return PartialView("_List", pageLists);
         }
 
         /// <summary>

@@ -32,6 +32,19 @@ namespace YCRCPracticeWebApp.Service
         }
 
         /// <summary>
+        /// Gets all orders.
+        /// </summary>
+        /// <returns>System.Collections.Generic.IList&lt;YCRCPracticeWebApp.Service.DataTransferObject.OrderDto&gt;.</returns>
+        public IList<OrderDto> GetAllOrders()
+        {
+
+            var source = _orderRepo.GetAll()
+                                   .ToList();
+            var dtos = Mapper.Map<IList<Orders>, IList<OrderDto>>(source);
+            return dtos;
+        }
+
+        /// <summary>
         /// Gets the page all orders.
         /// </summary>
         /// <param name="pageNumber">The page number.</param>

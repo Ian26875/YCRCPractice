@@ -35,6 +35,12 @@ namespace YCRCPracticeWebApp.Service.Interface
         IList<OrderDto> GetPageOrders(int pageNumber, int pageSize);
 
         /// <summary>
+        /// Gets all orders.
+        /// </summary>
+        /// <returns>IList&lt;OrderDto&gt;.</returns>
+        IList<OrderDto> GetAllOrders();
+
+        /// <summary>
         /// Gets the order.
         /// </summary>
         /// <param name="orderId">The order identifier.</param>
