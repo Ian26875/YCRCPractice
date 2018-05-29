@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using YCRCPracticeWebApp.ActionFilter;
+using YCRCPracticeWebApp.ActionResults;
 using YCRCPracticeWebApp.Models.ViewModels;
 using YCRCPracticeWebApp.Service.DataTransferObject;
 using YCRCPracticeWebApp.Service.Interface;
@@ -150,6 +151,14 @@ namespace YCRCPracticeWebApp.Controllers
         {
             this._orderService.DeleteOrder(orderId);
             return RedirectToAction("Index");
+        }
+
+
+        public ActionResult ExportCsv()
+        {
+            var source = this._orderService.GetAllOrders();          
+            var viewModel = Mapper.Map<IList<OrderDto>, IList<OrderDeleteViewModel>>(source);
+            return new CsvFileResult<OrderDeleteViewModel>(viewModel, "Order.csv");
         }
     }
 }

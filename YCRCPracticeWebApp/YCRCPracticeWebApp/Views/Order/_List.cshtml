@@ -2,7 +2,7 @@
 @model PagedList.IPagedList<YCRCPracticeWebApp.Models.ViewModels.OrderViewModel>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create")" class="btn btn-default">Create New</a>
 </p>
 <table class="table">
     <tr>
