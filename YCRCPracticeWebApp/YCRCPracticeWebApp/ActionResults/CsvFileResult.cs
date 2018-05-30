@@ -21,7 +21,7 @@ namespace YCRCPracticeWebApp.ActionResults
         /// <summary>
         /// The data
         /// </summary>
-        private readonly IList<T> _data;
+        private readonly IEnumerable<T> _data;
 
         /// <summary>
         /// The separator
@@ -34,7 +34,7 @@ namespace YCRCPracticeWebApp.ActionResults
         /// <param name="data">The data.</param>
         /// <param name="fileDownloadName">Name of the file download.</param>
         /// <param name="separator">The separator.</param>
-        public CsvFileResult(IList<T> data, string fileDownloadName, char separator = ',')
+        public CsvFileResult(IEnumerable<T> data, string fileDownloadName, char separator = ',')
         : base("text/csv")
         {
             _data = data;

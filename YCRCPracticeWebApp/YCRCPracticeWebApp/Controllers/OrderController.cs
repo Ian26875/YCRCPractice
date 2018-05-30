@@ -153,7 +153,11 @@ namespace YCRCPracticeWebApp.Controllers
             return RedirectToAction("Index");
         }
 
-
+        /// <summary>
+        /// Exports the CSV.
+        /// </summary>
+        /// <returns>ActionResult.</returns>
+        [HttpGet]
         public ActionResult ExportCsv()
         {
             var source = this._orderService.GetAllOrders();          
