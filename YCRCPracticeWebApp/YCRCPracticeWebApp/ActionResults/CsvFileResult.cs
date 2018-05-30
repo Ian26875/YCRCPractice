@@ -54,6 +54,7 @@ namespace YCRCPracticeWebApp.ActionResults
             {
                 this.WriteHeaderLine(writer);
                 this.WriteBodyLines(writer);
+                writer.Flush();
                 stream.Write(memoryStream.GetBuffer(), 0, (int)memoryStream.Length);
             }
         }
